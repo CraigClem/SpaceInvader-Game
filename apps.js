@@ -3,14 +3,16 @@ const grid = document.querySelector('.grid')
 const width = 9
 const cells = []
 let spaceShip = 76
-let laser = 0
+let laser = ''
 let spaceInvader = 0
+let playerScore = 0 
+let playerLife = 0
 
 
 
 for (let i = 0; i < (width) ** 2; i++) {
 
-  const div = document.createElement('div')
+  const div = document.createElement('div') 
   grid.appendChild(div)
   div.innerHTML = i
   cells.push(div)
@@ -27,7 +29,7 @@ document.addEventListener('keydown', (event) => {
     spaceShip -= 1
     cells[spaceShip].classList.add('spaceShip')
   }
-  if (key === 'j') {
+  if (key === 'j' && !(spaceShip >= 80)) {
     cells[spaceShip].classList.remove('spaceShip')
     spaceShip += 1
     cells[spaceShip].classList.add('spaceShip')
@@ -41,9 +43,31 @@ document.addEventListener('keydown', (event) => {
       cells[laser].classList.remove('laser')
       laser -= width
       cells[laser].classList.add('laser')
+
+      if (cells[spaceInvader] === (cells[laser])) {
+        cells[spaceInvader].classList.remove('spaceInvader')
+        cells[laser].classList.remove('laser')
+        cells[spaceInvader].classList.add('explosion')
+      
+
+      }
     }, 200)
   }
 })
+
+
+// setInterval(() => {
+
+
+//   cells[spaceInvader].classList.remove('spaceInvader')
+//   spaceInvader ++
+//   cells[spaceInvader].classList.add('spaceInvader')
+
+
+
+// }, 1000)
+
+
 
 
 
