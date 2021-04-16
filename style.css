@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  border: 10px solid black;
+  width: 400px;
+  height: 700px;
+  flex-wrap: wrap;
+}
+
+.grid div {
+  width: 11.11%;
+  height: 11.11%;
+  border: 1px solid black;
+}
+
+.spaceShip {
+  background-color: cyan;
+  background-size: contain;
+}
+
+.laser {
+  background-color: lightgreen;
+  background-size: contain;
+
+}
+
+.spaceInvader {
+  background-color: red;
+  background-size: contain;
+
+}
