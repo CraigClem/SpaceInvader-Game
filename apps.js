@@ -1,12 +1,15 @@
 const grid = document.querySelector('.grid')
-let playerScore = document.querySelector('.playerScore ')
+const scoreDisplay = document.querySelector('.score')
 
 const width = 9
 const cells = []
 let spaceShip = 76
 let laser = ''
-let spaceInvader = 0
-let playerLife = 0
+let spaceInvader = []
+let playerScore = 0
+let playerLife = 3
+
+
 
 
 
@@ -53,30 +56,31 @@ document.addEventListener('keydown', (event) => {
       laser = laser - width
       cells[laser].classList.add('laser')
 
-
       if (cells[spaceInvader] === (cells[laser])) {
         cells[spaceInvader].classList.remove('spaceInvader')
         cells[laser].classList.remove('laser')
         cells[spaceInvader].classList.add('explosion')
-        playerScore + 10
-        playerScore.innerHTML = (playerScore)
-        clearInterval(intervalID)
+        playerScore = playerScore + 10
+        scoreDisplay.innerHTML = (`Player Score: ${playerScore}`)
+  
       }
-      
-    
       console.log(laser)
     }, 200)
   }
 })
-console.log(playerScore.innerHTML)
+console.log(scoreDisplay.innerHTML)
 
-// setInterval(() => {
+// const IntervalID2 = setInterval(() => {
 
 
 //   cells[spaceInvader].classList.remove('spaceInvader')
 //   spaceInvader ++
 //   cells[spaceInvader].classList.add('spaceInvader')
-
+//   if (spaceInvader === 72) {
+//     clearInterval(IntervalID2)
+//     cells[spaceInvader].classList.remove('spaceInvader')
+//     console.log('Game Over!')
+//   }
 
 
 // }, 1000)
@@ -86,3 +90,11 @@ console.log(playerScore.innerHTML)
 
 
 
+function bomb(arr) {
+
+  const randomNum = Math.floor(Math.random() * (spaceInvader)) 
+  const dropbomb = randomNum
+  return dropbomb
+}
+
+console.log(bomb())
