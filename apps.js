@@ -4,25 +4,11 @@ const startBtn = document.querySelector('button')
 
 const width = 9
 const cells = []
-const InavaderArray = []
 let spaceShip = 76
-let spaceInvader = 0
+const spaceInvader = 0
 let laser = ''
 let playerScore = 0
-const playerLife = 3
 
-function startGame() {
-
-  startBtn.addEventListener('click', () => {
-    const intervalId3 = setInterval(() => {
-      console.log('Start Game')
-      //count down from three
-      //game code to be added in here.
-      clearInterval(intervalId3)
-    },1000)
-
-  })
-}
 
 for (let i = 0; i < (width) ** 2; i++) {
   const div = document.createElement('div')
@@ -31,20 +17,30 @@ for (let i = 0; i < (width) ** 2; i++) {
   cells.push(div)
 }
 
-//add invaders to the grid
-function addInvader() {
-  //iterate through cells 1 - 7
-  for (let i = 1; i < width - 1; i++) {
-    //add class spaceInvader class to cells
-    cells[i].classList.add('spaceInvader')
-    console.log(i)
-  }
+cells[spaceShip].classList.add('spaceShip')
+
+let invaders = [0,1,2,3,4,5]
+
+function addInvaders() {
+  invaders.forEach(invader => cells[invader].classList.add('spaceInvader'))
 }
 
+function removeInvaders() {
+  invaders.forEach(invader => cells[invader].classList.remove('spaceInvader'))
+}
 
-addInvader()
+function moveInvaders() {
+  invaders = invaders.map(invader => invader + 1) 
+}
 
-cells[spaceShip].classList.add('spaceShip')
+addInvaders()
+
+setInterval(() => {
+  removeInvaders()
+  moveInvaders()
+  addInvaders()
+
+},1000)
 
 // Player Movement + player fire laser
 document.addEventListener('keydown', (event) => {
@@ -73,58 +69,23 @@ document.addEventListener('keydown', (event) => {
       cells[laser].classList.remove('laser')
       laser = laser - width
       cells[laser].classList.add('laser')
+
       //collision of laser and invader
-      if (cells[spaceInvader] === (cells[laser])) {
-        cells[spaceInvader].classList.remove('spaceInvader')
-        cells[laser].classList.remove('laser')
-        cells[spaceInvader].classList.add('explosion')
-        //stop laser from continuing up the grid       
-        clearInterval(intervalID)
-        //add 10pts to player score when invader hit.        
-        playerScore = playerScore + 10
-        scoreDisplay.innerHTML = (`Player Score: ${playerScore}`)
-        //need to remove invader once 'hit' 
-      }
-      console.log(laser)
+      const hitIndex = invaders.find(invader => invader === laser)
+
+      if (!hitIndex) return 
+      console.log('hit!')
+
+      cells[hitIndex].classList.remove('spaceInvader')
+      cells[hitIndex].classList.remove('laser')
+      //stop laser from continuing up the grid       
+      clearInterval(intervalID)
+      //add 10pts to player score when invader hit.        
+      playerScore = playerScore + 10
+      console.log(playerScore)
+      scoreDisplay.innerHTML = (`Player Score: ${playerScore}`)
+      //need to remove invader once 'hit' 
+    
     }, 200)
   }
 })
-
-// one hard coded invader movement from left to right only
-const IntervalID2 = setInterval(() => {
-
-
-  cells[spaceInvader].classList.remove('spaceInvader')
-  spaceInvader++
-  cells[spaceInvader].classList.add('spaceInvader')
-  // game over when invader reaches last row
-  if (spaceInvader === 72) {
-    clearInterval(IntervalID2)
-    cells[spaceInvader].classList.remove('spaceInvader')
-    alert('Game Over!')
-  }
-
-
-}, 1000)
-
-// invaders drop bombs on player
-
-// function bomb() {
-//   if (cells.classList.contains('spaceInvader')) {
-    
-//   }
-// }
-
-// console.log(bomb())
-
-
-// reset game function 
-// function resetGame() {
-//   lives = 3
-//   score = 0
-//   spaceShip = 76
-//   intervalId = 0
-//   spaceInavder = []
-//   cells[spaceInvader].classList.remove('spaceInvader')
-//   alert(`Final score ${playerScore}`)
-// }
