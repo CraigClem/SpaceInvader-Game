@@ -9,7 +9,7 @@ body {
   align-items: center;
   flex-direction: column;
   margin: 0;
-  background: url('http://www.csun.edu/~asn71882/challenge09/bg.jpg'); 
+  background: url('http://www.csun.edu/~asn71882/challenge09/bg.jpg');
 
 }
 
@@ -41,6 +41,13 @@ body {
 
 .spaceInvader {
   background: url('https://i.ytimg.com/vi/f8iY3_2msR4/sddefault.jpg') no-repeat center center / contain;
+  background-size: contain;
+
+}
+
+.bomb {
+
+  background:red;
   background-size: contain;
 
 }
