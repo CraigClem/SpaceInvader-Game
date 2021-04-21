@@ -7,7 +7,7 @@ const cells = [] //cells is an array of divs!
 let spaceShip = 76 //player starting postion
 let laser = ''
 let playerScore = 0
-const hitInvaders = []
+let playerLife = 3
 
 //add divs to cells array via the the DOM
 for (let i = 0; i < (width) ** 2; i++) {
@@ -32,30 +32,41 @@ function removeInvaders() {
 }
 //function to loop through invaders array and move spaceInvader one div to the right
 function moveInvaders() {
-  invaders = invaders.map(invader => invader + 1) 
-  if (invaders === cells[72]){
-    console.log('Game Over')
-  }
+  invaders = invaders.map(invader => invader + 1)
 }
 //function to generate invader bombs at random postions, dropped every 1sec if cells conatins the invader class
 function dropBomb() {
+//set interval for new bomb every 1 sec if random cell conatins an invader
   setInterval(() => {
-    const randomInvader = Math.floor(Math.random() * cells.length)
-    if (cells[randomInvader].classList.contains('spaceInvader')) {
-      cells[randomInvader].classList.add('bomb')
-    }
-  },1000)
-}
+    // random cell
+    let randomBomb = Math.floor(Math.random() * cells.length)
+    //bombs only dropped from cells with invaders in
 
-//function to filter invader from invaders array and return a new invaders when cell index is not equal to laser index
-// function hitInvader() {
-//   const filteredInvaders = invaders.filter((invaders) => {
-//     return invaders !== cells[laser] //retun if condition true
-//   })
-//   return filteredInvaders
-  
-// } 
-// hitInvader()
+    if (cells[randomBomb].classList.contains('spaceInvader')) {
+      cells[randomBomb].classList.add('bomb')
+      //set interval for bomb movement
+      const bombInterval = setInterval(() => {
+        cells[randomBomb].classList.remove('bomb')
+        randomBomb = randomBomb + width
+        cells[randomBomb].classList.add('bomb')
+        console.log(randomBomb)
+        if (randomBomb > 71) {
+          cells[randomBomb].classList.remove('bomb')
+          clearInterval(bombInterval)
+        }
+        if (cells[randomBomb] === cells[spaceShip]) {
+          playerLife = playerLife - 1
+          console.log(playerLife)
+        }
+
+        if (playerLife === 0) {
+          console.log('GAMEOVER')
+        }
+      },500)
+      // stop bombs from moving past last row (cell72)
+    }
+  },1000) 
+}
 
 
 //add invaders to grid
@@ -69,7 +80,6 @@ setInterval(() => {
   addInvaders()
 
 },1000)
-
 
 // Player Movement + player fire laser
 document.addEventListener('keydown', (event) => {
@@ -96,6 +106,7 @@ document.addEventListener('keydown', (event) => {
         clearInterval(intervalID)
         return
       }
+
       // laser movement up the screen
       cells[laser].classList.remove('laser')
       laser = laser - width
@@ -105,16 +116,11 @@ document.addEventListener('keydown', (event) => {
       const hitIndex = invaders.find(invader => invader === laser)
       // if hit index not the same as laser, do nothing.
       if (!hitIndex) return 
-      console.log(hitIndex) 
+
       //else....
-    
       invaders = invaders.filter((invader => {
         return invader !== hitIndex
       }))
-
-      
-
-
 
       cells[hitIndex].classList.remove('spaceInvader')
       cells[hitIndex].classList.remove('laser')
@@ -126,5 +132,3 @@ document.addEventListener('keydown', (event) => {
     }, 200)
   }
 })
-
-
