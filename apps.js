@@ -3,6 +3,7 @@ const scoreDisplay = document.querySelector('.score')
 const lifeDisplay = document.querySelector('.life')
 const gameoverDisplay = document.querySelector('.gameover')
 const startBtn = document.querySelector('button')
+const audioPlayer = document.querySelector('audio')
 
 const width = 9
 const cells = [] //cells is an array of divs!
@@ -10,13 +11,12 @@ let spaceShip = 76 //player starting postion
 let laser = ''
 let playerScore = 0
 let playerLife = 3
-let invaderDiretion = 1
+const invaderDiretion = 1
 
 //add divs to cells array via the the DOM
 for (let i = 0; i < (width) ** 2; i++) {
   const div = document.createElement('div')
   grid.appendChild(div)
-  div.innerHTML = i
   cells.push(div)
 }
 // add player postion at start of game
@@ -43,7 +43,6 @@ function moveInvaders() {
     return invader >= 72
   })) {  
     clearInterval(invaderInterval)
-    console.log('GAME OVER')
     gameoverDisplay.innerHTML = ('GAME OVER')
     reset()
   }
@@ -81,6 +80,8 @@ function dropBomb() {
           clearInterval(bombInterval)
         }
         if (cells[randomBomb] === cells[spaceShip]) {
+          audioPlayer.src = 'sounds/explosion.wav'
+          audioPlayer.play()
           playerLife = playerLife - 1
           lifeDisplay.innerHTML = (`Lives: ${playerLife}`)
           console.log(playerLife)
@@ -89,11 +90,8 @@ function dropBomb() {
   
           gameOver()
           gameoverDisplay.innerHTML = ('GAME OVER')
-        
-   
         }
       },500)
-      // stop bombs from moving past last row (cell72)
     }
   },500) 
 }
@@ -112,6 +110,8 @@ document.addEventListener('keydown', (event) => {
     cells[spaceShip].classList.add('spaceShip')
   }
   if (key === ' ') {
+    audioPlayer.src = 'sounds/shoot.wav'
+    audioPlayer.play()
     laser = spaceShip - width
     cells[laser].classList.add('laser')
     
@@ -141,6 +141,8 @@ document.addEventListener('keydown', (event) => {
 
       cells[hitIndex].classList.remove('spaceInvader')
       cells[hitIndex].classList.remove('laser')
+      audioPlayer.src = 'sounds/invaderkilled.wav'
+      audioPlayer.play()
 
       //stop laser from continuing up the grid       
       clearInterval(intervalID)     
@@ -188,4 +190,5 @@ function newLevel() {
 function gameOver() {
   removeInvaders()
   cells[spaceShip].classList.remove('spaceShip')
+  clearInterval(invaderInterval)
 }

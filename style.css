@@ -36,7 +36,6 @@ body {
 
 .laser {
   background-color: lightgreen;
-  background-size: contain;
 
 }
 
@@ -48,7 +47,7 @@ body {
 
 .bomb {
 
-  background:red;
+  background: url('https://www.crwflags.com/fotw/images/u/us_trl1.gif') no-repeat center center / contain;
   background-size: contain;
 
 }
