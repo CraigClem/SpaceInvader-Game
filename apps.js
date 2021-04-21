@@ -1,5 +1,7 @@
 const grid = document.querySelector('.grid')
 const scoreDisplay = document.querySelector('.score')
+const lifeDisplay = document.querySelector('.life')
+const gameoverDisplay = document.querySelector('gameover')
 const startBtn = document.querySelector('button')
 
 const width = 9
@@ -8,6 +10,7 @@ let spaceShip = 76 //player starting postion
 let laser = ''
 let playerScore = 0
 let playerLife = 3
+let invaderDiretion = 1
 
 //add divs to cells array via the the DOM
 for (let i = 0; i < (width) ** 2; i++) {
@@ -33,7 +36,30 @@ function removeInvaders() {
 //function to loop through invaders array and move spaceInvader one div to the right
 function moveInvaders() {
   invaders = invaders.map(invader => invader + 1)
+  if (invaders.some((invader) => {
+    return invader >= 72
+  })) {  
+    clearInterval(invaderInterval)
+    reset()
+    gameoverDisplay.innerHTML = ('GAME OVER')
+  }
 }
+
+addInvaders()
+dropBomb()
+
+// calling all invader functions within setInterval to move them all accross the cells array one div at a time
+const invaderInterval = setInterval(() => {
+
+  removeInvaders()
+  moveInvaders()
+  addInvaders()
+
+},1000)
+
+
+
+
 //function to generate invader bombs at random postions, dropped every 1sec if cells conatins the invader class
 function dropBomb() {
 //set interval for new bomb every 1 sec if random cell conatins an invader
@@ -41,7 +67,6 @@ function dropBomb() {
     // random cell
     let randomBomb = Math.floor(Math.random() * cells.length)
     //bombs only dropped from cells with invaders in
-
     if (cells[randomBomb].classList.contains('spaceInvader')) {
       cells[randomBomb].classList.add('bomb')
       //set interval for bomb movement
@@ -56,30 +81,18 @@ function dropBomb() {
         }
         if (cells[randomBomb] === cells[spaceShip]) {
           playerLife = playerLife - 1
+          lifeDisplay.innerHTML = (`Lives: ${playerLife}`)
           console.log(playerLife)
         }
-
         if (playerLife === 0) {
+          reset()
           console.log('GAMEOVER')
         }
       },500)
       // stop bombs from moving past last row (cell72)
     }
-  },1000) 
+  },500) 
 }
-
-
-//add invaders to grid
-addInvaders()
-dropBomb()
-
-// calling all invader functions within setInterval to move them all accross the cells array one div at a time
-setInterval(() => {
-  removeInvaders()
-  moveInvaders()
-  addInvaders()
-
-},1000)
 
 // Player Movement + player fire laser
 document.addEventListener('keydown', (event) => {
@@ -132,3 +145,20 @@ document.addEventListener('keydown', (event) => {
     }, 200)
   }
 })
+
+
+function reset() {
+
+  playerScore = 0
+  playerLife = 3
+  lifeDisplay.innerHTML = (`Lives: ${playerLife}`)
+  cells[spaceShip].classList.remove('spaceShip')
+  spaceShip = 76
+  removeInvaders()
+  invaders = [1,2,3,4,5,6,7,10,11,12,13,14,15,16]
+  removeInvaders()
+  addInvaders()
+  moveInvaders()
+  cells[spaceShip].classList.add('spaceShip')
+  
+}
