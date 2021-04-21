@@ -1,7 +1,7 @@
 const grid = document.querySelector('.grid')
 const scoreDisplay = document.querySelector('.score')
 const lifeDisplay = document.querySelector('.life')
-const gameoverDisplay = document.querySelector('gameover')
+const gameoverDisplay = document.querySelector('.gameover')
 const startBtn = document.querySelector('button')
 
 const width = 9
@@ -28,6 +28,9 @@ let invaders = [1,2,3,4,5,6,7,10,11,12,13,14,15,16]
 //function to loop through invaders array and add spaceInvader class to the divs within the cells array
 function addInvaders() {
   invaders.forEach(invader => cells[invader].classList.add('spaceInvader'))
+  if (invaders.length === 0){
+    newLevel()
+  }
 }
 //function to loop through invaders array and remove spaceInvader class from the divs within the cells array
 function removeInvaders() {
@@ -40,8 +43,9 @@ function moveInvaders() {
     return invader >= 72
   })) {  
     clearInterval(invaderInterval)
-    reset()
+    console.log('GAME OVER')
     gameoverDisplay.innerHTML = ('GAME OVER')
+    reset()
   }
 }
 
@@ -56,9 +60,6 @@ const invaderInterval = setInterval(() => {
   addInvaders()
 
 },1000)
-
-
-
 
 //function to generate invader bombs at random postions, dropped every 1sec if cells conatins the invader class
 function dropBomb() {
@@ -85,8 +86,11 @@ function dropBomb() {
           console.log(playerLife)
         }
         if (playerLife === 0) {
-          reset()
-          console.log('GAMEOVER')
+  
+          gameOver()
+          gameoverDisplay.innerHTML = ('GAME OVER')
+        
+   
         }
       },500)
       // stop bombs from moving past last row (cell72)
@@ -148,7 +152,7 @@ document.addEventListener('keydown', (event) => {
 
 
 function reset() {
-
+  gameoverDisplay.innerHTML = ('')
   playerScore = 0
   playerLife = 3
   lifeDisplay.innerHTML = (`Lives: ${playerLife}`)
@@ -157,8 +161,31 @@ function reset() {
   removeInvaders()
   invaders = [1,2,3,4,5,6,7,10,11,12,13,14,15,16]
   removeInvaders()
-  addInvaders()
   moveInvaders()
+  addInvaders()
   cells[spaceShip].classList.add('spaceShip')
   
+}
+
+function newLevel() {
+
+  lifeDisplay.innerHTML = (`Lives: ${playerLife}`)
+  cells[spaceShip].classList.remove('spaceShip')
+  spaceShip = 76
+  removeInvaders()
+  invaders = [1,2,3,4,5,6,7,10,11,12,13,14,15,16,19,20,21,22,23,24,25]
+  removeInvaders()
+  moveInvaders()
+  addInvaders()
+  cells[spaceShip].classList.add('spaceShip')
+  if (playerLife === 0){
+    gameoverDisplay.innerHTML = ('GAME OVER')
+    reset()
+    gameoverDisplay.innerHTML = ('')
+  }
+}
+
+function gameOver() {
+  removeInvaders()
+  cells[spaceShip].classList.remove('spaceShip')
 }
