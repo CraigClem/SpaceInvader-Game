@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   height: 100vh;
   display: flex;
@@ -10,7 +11,7 @@ body {
   flex-direction: column;
   margin: 0;
   background: url('http://www.csun.edu/~asn71882/challenge09/bg.jpg');
-  color:aqua;
+  color: rgba(255, 255, 0, 0.747);
 
 }
 
@@ -35,7 +36,7 @@ body {
 }
 
 .laser {
-  background-color: lightgreen;
+  background: url('https://a.rgbimg.com/users/x/xy/xymonau/600/njdVUg0.jpg') no-repeat center center / contain;
 
 }
 
@@ -47,32 +48,66 @@ body {
 
 .bomb {
 
-  background: url('https://www.crwflags.com/fotw/images/u/us_trl1.gif') no-repeat center center / contain;
-  background-size: contain;
-
-}
-
-.spaceInvader2 {
-  background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR28xDPCGFuZeDE8SqjPaAYJKMvRD7uQCmgTIPCcTyOX2afJhXWP6y_rZurF5qKwnbvyQM&usqp=CAU') no-repeat center center /contain
-}
-
-.explosion {
-
-  background-color: orange;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Mu_cephei.jpg/544px-Mu_cephei.jpg') no-repeat center center / contain;
   background-size: contain;
 
 }
 
 .playerScore {
 
-  
+  margin: 10px;
+  padding: 5px;
+
 }
 
-/* .title {
+.life {
+
+  margin: 5px;
+  padding: 5px;
+
+}
+
+.gameover {
+  font: 12px;
+  margin: 5px;
+  padding: 5px;
+
+}
+
+.title {
   background:url('https://i.pinimg.com/originals/6b/bc/d9/6bbcd95e1f751a22c7bfa6928823e4ee.jpg') no-repeat center center /contain;
   opacity: .5;
   background-size: contain;
   width: 600px;
   height: 600px;
   margin: 10px;
-} */
+}
+
+.start {
+
+  background: black;
+  color: rgba(255, 255, 0, 0.747);
+  border: 3px, solid, rgb(0, 0, 0);
+  border-radius: 100px;
+  padding: 10px;
+  font-weight: bold;
+  width: 120px;
+}
+
+.start2 {
+
+display:none
+
+}
+
+.restart {
+
+  background: black;
+  color: rgba(255, 255, 0, 0.747);
+  border: 3px, solid, rgb(0, 0, 0);
+  border-radius: 100px;
+  padding: 10px;
+  font-weight: bold;
+  width: 120px;
+
+}
