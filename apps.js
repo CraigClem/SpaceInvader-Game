@@ -16,21 +16,25 @@ let playerLife = 3
 
 startBtn.addEventListener('click',() => {
   playGame()
+  playerLife = 3
+  lifeDisplay.innerHTML = (`LIVES: ${playerLife}`)
+  gameoverDisplay.innerHTML = ('')
 })
 
-
-
 function playGame() {
-
-  restartBtn.addEventListener('click',() => {
+  
+  startBtn.addEventListener('click',() => {
     gameOver()
-    reset()
     playGame()
-    
+    playerLife = 3
+    lifeDisplay.innerHTML = (`LIVES: ${playerLife}`)
+    gameoverDisplay.innerHTML = ('')
   })
 
 
-//add divs to cells array via the the DOM
+
+ 
+  //add divs to cells array via the the DOM
   for (let i = 0; i < (width) ** 2; i++) {
     const div = document.createElement('div')
     grid.appendChild(div)
@@ -68,7 +72,6 @@ function playGame() {
 
   addInvaders()
   dropBomb()
-
   // calling all invader functions within setInterval to move them all accross the cells array one div at a time
   const invaderInterval = setInterval(() => {
 
@@ -168,15 +171,14 @@ function playGame() {
     }
   })
 
-
-
-
-
   function reset() {
+    clearInterval(invaderInterval)
+    gameOver()
     gameoverDisplay.innerHTML = ('')
     playerScore = 0
+    scoreDisplay.innerHTML = (`PLAYER SCORE: ${playerScore}`)
     playerLife = 3
-    lifeDisplay.innerHTML = (`Lives: ${playerLife}`)
+    lifeDisplay.innerHTML = (`LIVES: ${playerLife}`)
     cells[spaceShip].classList.remove('spaceShip')
     spaceShip = 76
     removeInvaders()
@@ -184,7 +186,7 @@ function playGame() {
     removeInvaders()
     moveInvaders()
     addInvaders()
-    cells[spaceShip].classList.add('spaceShip')
+    // cells[spaceShip].classList.add('spaceShip')
   
   }
 
@@ -213,16 +215,3 @@ function playGame() {
   }
 
 }
-
-
-// function playAgain() {
-
-//   const continueH1 = document.createElement('h1')
-//   grid.append(continueH1)
-//   continueH1.innerHTML = ('PLAY AGAIN')
-//   console.log(continueH1)
-//   continueH1.addEventListener('click',() => {
-//     reset()
-
-//   })
-// }
