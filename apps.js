@@ -12,6 +12,7 @@ let spaceShip = 76 //player starting postion
 let laser = ''
 let playerScore = 0
 let playerLife = 3
+let direction = 1
 
 
 startBtn.addEventListener('click',() => {
@@ -22,23 +23,21 @@ startBtn.addEventListener('click',() => {
 })
 
 function playGame() {
-  
+
   startBtn.addEventListener('click',() => {
     gameOver()
-    playGame()
     playerLife = 3
     lifeDisplay.innerHTML = (`LIVES: ${playerLife}`)
     gameoverDisplay.innerHTML = ('')
   })
 
-
-
- 
   //add divs to cells array via the the DOM
   for (let i = 0; i < (width) ** 2; i++) {
     const div = document.createElement('div')
     grid.appendChild(div)
     cells.push(div)
+    div.innerHTML = i 
+  
   }
   // add player postion at start of game
   cells[spaceShip].classList.add('spaceShip')
@@ -59,7 +58,27 @@ function playGame() {
   }
   //function to loop through invaders array and move spaceInvader one div to the right
   function moveInvaders() {
-    invaders = invaders.map(invader => invader + 1)
+
+    const vaderRightWall =  invaders.some((invader) => {
+      return invader % width === width - 1
+    })
+    const vaderLeftWall =  invaders.some((invader) => {
+      return invader % width === 0
+    })
+    if (vaderLeftWall && direction === -1) {
+      invaders = invaders.map(invader => invader + width) 
+      direction = 1
+    } else if (vaderRightWall && direction === 1) {
+      invaders = invaders.map(invader => invader + width) 
+      direction = - 1
+    } else if (direction === -1) {
+      invaders = invaders.map((invader => {
+        return invader - 1
+      }))
+    } else {
+      invaders = invaders.map(invader => invader + 1) 
+    } 
+
 
     if (invaders.some((invader) => {
       return invader >= 72

@@ -10,8 +10,8 @@ body {
   align-items: center;
   flex-direction: column;
   margin: 0;
-  background: url('http://www.csun.edu/~asn71882/challenge09/bg.jpg');
-  color: rgba(255, 255, 0, 0.747);
+  background: url('http://www.csun.edu/~asn71882/challenge09/bg.jpg'); 
+  color: rgba(255, 255, 0, 0.747); 
   font-family: 'DotGothic16', sans-serif;
 
 }
@@ -45,6 +45,7 @@ body {
 .spaceInvader {
   background: url('https://i.ytimg.com/vi/f8iY3_2msR4/sddefault.jpg') no-repeat center center / contain;
   background-size: contain;
+  /* https://c4.wallpaperflare.com/wallpaper/983/697/129/space-black-background-rocket-digital-art-wallpaper-preview.jpg */
 
 }
 
