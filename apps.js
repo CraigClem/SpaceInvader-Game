@@ -6,7 +6,6 @@ const startBtn = document.querySelector('.start')
 const restartBtn = document.querySelector('.restart')
 const audioPlayer = document.querySelector('audio')
 const controls = document.querySelector('.controls')
-const buttonDiv = document.querySelector('.start-game')
 const logo = document.querySelector('.logo')
 
 const width = 9
@@ -38,21 +37,15 @@ startBtn.addEventListener('click',() => {
 
 function playGame() {
 
-
-
   restartBtn.addEventListener('click',() => {
     location.reload()
   })
-
-
-//add divs to cells array via the the DOM
-  
+  //add divs to grid  
   for (let i = 0; i < (width) ** 2; i++) {
     const div = document.createElement('div')
     grid.appendChild(div)
     cells.push(div)
   }
-
   // add player postion at start of game
   cells[spaceShip].classList.add('spaceShip')
 
@@ -98,6 +91,8 @@ function playGame() {
       return invader >= 72
     })) {  
       clearInterval(invaderInterval)
+      audioPlayer.src = 'sounds/gameover.wav'
+      audioPlayer.play()
       gameoverDisplay.innerHTML = ('GAME OVER')
       gameOver()
     }
@@ -141,6 +136,8 @@ function playGame() {
           if (playerLife === 0) {
   
             gameOver()
+            audioPlayer.src = 'sounds/gameover.wav'
+            audioPlayer.play()
             gameoverDisplay.innerHTML = ('GAME OVER')
           }
         },300)
@@ -235,6 +232,8 @@ function playGame() {
     addInvaders()
     cells[spaceShip].classList.add('spaceShip')
     if (playerLife === 0){
+      audioPlayer.src = 'sounds/gameover.wav'
+      audioPlayer.play()
       gameoverDisplay.innerHTML = ('GAME OVER')
       reset()
       gameoverDisplay.innerHTML = ('')
