@@ -33,19 +33,19 @@ body {
 }
 
 .spaceShip {
-  background-color: red;
+  background:url('https://i.dailymail.co.uk/1s/2019/01/21/17/8802400-6615703-image-a-29_1548091241869.jpg') no-repeat center center / contain;
+  /* background-color: red; */
   background-size:cover;
 }
 
 .laser {
-  background: url('https://a.rgbimg.com/users/x/xy/xymonau/600/njdVUg0.jpg') no-repeat center center / contain;
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT03XJ-P8EUZvaHte301L0l5uQDM8ccP6VsI0G9bjFn1xEddNJMdobepj7akiFhYgz0Ank&usqp=CAU') no-repeat center center / contain;
 
 }
 
 .spaceInvader {
   background: url('https://i.ytimg.com/vi/f8iY3_2msR4/sddefault.jpg') no-repeat center center / contain;
   background-size: contain;
-  /* https://c4.wallpaperflare.com/wallpaper/983/697/129/space-black-background-rocket-digital-art-wallpaper-preview.jpg */
 
 }
 
