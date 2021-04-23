@@ -99,6 +99,8 @@ function playGame() {
       audioPlayer.src = 'sounds/gameover.wav'
       audioPlayer.play()
       gameoverDisplay.innerHTML = ('GAME OVER')
+      playerLife = 0
+      lifeDisplay.innerHTML = (`LIVES: ${playerLife}`)
       gameOver()
     }
   }
