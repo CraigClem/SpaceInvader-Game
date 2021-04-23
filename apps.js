@@ -147,7 +147,7 @@ function playGame() {
           }
         },300)
       }
-    },500) 
+    },300) 
   }
 
   // Player Movement + player fire laser
@@ -235,6 +235,7 @@ function playGame() {
     removeInvaders()
     moveInvaders()
     addInvaders()
+
     cells[spaceShip].classList.add('spaceShip')
     if (playerLife === 0){
       audioPlayer.src = 'sounds/gameover.wav'
