@@ -20,22 +20,27 @@ let direction = 1
 
 audioPlayer.src = 'sounds/soundtrack.wav'
 audioPlayer.play()
+restartBtn.classList.add('hide')
 
 
 startBtn.addEventListener('click',() => {
+
   playGame()
   playerLife = 3
   lifeDisplay.innerHTML = (`LIVES: ${playerLife}`)
   gameoverDisplay.innerHTML = ('')
+  restartBtn.classList.remove('hide')
+  restartBtn.classList.add('restart')
   controls.classList.add('hide')
   logo.classList.add('hide')
-  logo.classList.add('gameplay')
   audioPlayer.src = 'sounds/soundtrack.wav'
   audioPlayer.stop()
 
 })
 
 function playGame() {
+
+  startBtn.classList.add('hide')
 
   restartBtn.addEventListener('click',() => {
     location.reload()
