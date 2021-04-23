@@ -2,9 +2,10 @@ const grid = document.querySelector('.grid')
 const scoreDisplay = document.querySelector('.score')
 const lifeDisplay = document.querySelector('.life')
 const gameoverDisplay = document.querySelector('.gameover')
-const startBtn = document.querySelector('.start-game')
+const startBtn = document.querySelector('.start')
 const restartBtn = document.querySelector('.restart')
 const audioPlayer = document.querySelector('audio')
+const controls = document.querySelector('.controls')
 
 const width = 9
 const cells = [] //cells is an array of divs!
@@ -19,6 +20,7 @@ startBtn.addEventListener('click',() => {
   playerLife = 3
   lifeDisplay.innerHTML = (`LIVES: ${playerLife}`)
   gameoverDisplay.innerHTML = ('')
+  controls.classList.add('hide')
 })
 
 function playGame() {
