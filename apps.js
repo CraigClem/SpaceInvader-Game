@@ -6,6 +6,8 @@ const startBtn = document.querySelector('.start')
 const restartBtn = document.querySelector('.restart')
 const audioPlayer = document.querySelector('audio')
 const controls = document.querySelector('.controls')
+const buttonDiv = document.querySelector('.start-game')
+const logo = document.querySelector('.logo')
 
 const width = 9
 const cells = [] //cells is an array of divs!
@@ -15,15 +17,28 @@ let playerScore = 0
 let playerLife = 3
 let direction = 1
 
+
+
+audioPlayer.src = 'sounds/soundtrack.wav'
+audioPlayer.play()
+
+
 startBtn.addEventListener('click',() => {
   playGame()
   playerLife = 3
   lifeDisplay.innerHTML = (`LIVES: ${playerLife}`)
   gameoverDisplay.innerHTML = ('')
   controls.classList.add('hide')
+  logo.classList.add('hide')
+  logo.classList.add('gameplay')
+  audioPlayer.src = 'sounds/soundtrack.wav'
+  audioPlayer.stop()
+
 })
 
 function playGame() {
+
+
 
   restartBtn.addEventListener('click',() => {
     location.reload()
