@@ -10,6 +10,7 @@ const logo = document.querySelector('.logo')
 
 const width = 9
 const cells = [] //cells is an array of divs!
+
 let spaceShip = 76 //player starting postion
 let laser = ''
 let playerScore = 0
@@ -19,7 +20,7 @@ let direction = 1
 
 
 audioPlayer.src = 'sounds/soundtrack.wav'
-audioPlayer.play()
+// audioPlayer.play()
 restartBtn.classList.add('hide')
 
 
@@ -223,7 +224,6 @@ function playGame() {
     removeInvaders()
     moveInvaders()
     addInvaders()
-    // cells[spaceShip].classList.add('spaceShip')
   
   }
 
@@ -237,7 +237,6 @@ function playGame() {
     removeInvaders()
     moveInvaders()
     addInvaders()
-
     cells[spaceShip].classList.add('spaceShip')
     if (playerLife === 0){
       audioPlayer.src = 'sounds/gameover.wav'
