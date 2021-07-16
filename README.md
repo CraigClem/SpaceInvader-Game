@@ -279,11 +279,8 @@ const intervalID = setInterval(() => {
 
 
 ## Potential future features
+
+- Although I did include a level 2, i would like to have spent a little more time on this and dynamically increased the number of Invaders and the speed in which the moved. 
  
-
-
-## Lessons learned
-
-- Plan better. By the latter stage of the project I was already feeling much more comfortable in implementing my ideas. The boss level worked exactly as I was expecting it to after I planned it out carefully. The previously created elements involved much more trial and error. 
 
 ### [Play the game Now!]()
