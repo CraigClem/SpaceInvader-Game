@@ -37,6 +37,10 @@ You can play the game [here]('https://craigclem.github.io/SpaceInvader-Game/')
 
 ## The Approach
 
+When we were told we were to create a retro acrcade game from a selection of options i was delighted to see the Space Invaders was one of them! I've always assocaiated Space Invaders with the 80's and aracde gaming. The nostalgia kicked in and I was excited to be begin planning my build and began drawing out a grid and jotting down my thoughts and ideas.
+
+[!image]
+
 ### The Grid
 
 The game is built using a grid. A 9 x 9 square is created using JavaScript -  HTML divs are created using a for loop and appended as children of the grid.
@@ -77,7 +81,7 @@ function addInvaders() {
 
 ### Space Invader Movement
 
-To move the invaders accross the grid I created 3 funtions to handle each step of movement which are: 
+To move the invaders across the grid I created 3 funtions to handle each step of movement which are: 
 
 ```js 
 
@@ -89,7 +93,7 @@ To move the invaders accross the grid I created 3 funtions to handle each step o
 
  removeInvaders uses the forEach method similar to addInvaders however removes the 'spaceInvader' class from the cells on the grid. 
 
- moveInvaders is a function which defines the parameters of the grid 'walls' and sets the conditions of the movement based on the postion of the invaders within the grid. Using the .some() array method, once an invader has reached the 'edge' of the grid i then used the .map() array method to move the invaders down a row and change the the direction of movement. 
+ moveInvaders is a function which defines the parameters of the grid 'walls' and sets the conditions of the movement based on the postion of the invaders within the grid. Using the .some() array method, once an invader has reached the 'edge' of the grid I then used the .map() array method to move the invaders down a row and change the the direction of movement. 
 
 
  ```js 
@@ -133,7 +137,7 @@ To move the invaders accross the grid I created 3 funtions to handle each step o
 
   ```
 
-  All three movement fuctions where then called in order within a setInterval of 1000ms
+  All three movement functions where then called in order within a setInterval of 1000ms
 
   ```js
 
@@ -218,7 +222,7 @@ document.addEventListener('keydown', (event) => {
 
 ```
 
-to fire the laser I also used keydown and set conditions using if statements for a miss and a hit which is nested within a set interval. Similar to the Space Invader bomb dropping, a 'Laser' class is then added and removed at the SpaceShip position minus width.
+To fire the laser I also used keydown and set conditions using if statements for a miss and a hit which is nested within a set interval. Similar to the Space Invader bomb dropping, a 'Laser' class is then added and removed at the SpaceShip position minus width.
 
 To check if the laser hit an invader, I used the .find() array method to check if the cell contained both the laser and an an invader. If the cell did contain the invader class I then filtered the invader array and removed the invader which was postioned at collison index and the player recieved 10pts. 
 
@@ -281,6 +285,14 @@ const intervalID = setInterval(() => {
 ## Potential future features
 
 - Although I did include a level 2, i would like to have spent a little more time on this and dynamically increased the number of Invaders and the speed in which the moved. 
+
+## Bugs 
+
+- The game currently has two bugs that in the future I would like to resolve, the first is that the "laser" class sometimes reamins in a cell after a hit and the second is that when the Invaders are on the second to last row, they cannot be hit by the players laser.
+
+## Key Learning
+
+- Getting to grips with Functions, Array Methods and writing conditions. As I has no previous knowledge or experience coding I found this excercise to be extremley rewarding and being able to play a game which I had build in just one week instilled confidence to accelerate my development!  
  
 
-### [Play the game Now!]()
+### [Play the game Now!](https://craigclem.github.io/SpaceInvader-Game/)
