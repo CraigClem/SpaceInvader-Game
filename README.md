@@ -10,9 +10,7 @@ My task was to create a grid-based game rendered in the browser that utilised 'v
 
 Given a selection of classic arcade games to choose from, I opted to build  _Space Invaders_ and my intent was to pay homage to the original 1978 Arcade version.
 
-The project was mainly to consolidate my beginners' knowledge of JavaScript and interacting with the DOM, but I worked hard to make it a fun experience to play.
-
-You can play the game [here]('https://craigclem.github.io/SpaceInvader-Game/') 
+The project was mainly to consolidate my beginners' knowledge of JavaScript and interacting with the DOM, but I worked hard to make it a fun experience to play. 
 
 
 ## The Brief 
@@ -39,7 +37,7 @@ You can play the game [here]('https://craigclem.github.io/SpaceInvader-Game/')
 
 When we were told we were to create a retro acrcade game from a selection of options i was delighted to see the Space Invaders was one of them! I've always assocaiated Space Invaders with the 80's and aracde gaming. The nostalgia kicked in and I was excited to be begin planning my build and began drawing out a grid and jotting down my thoughts and ideas.
 
-[!image]
+
 
 ### The Grid
 
@@ -265,6 +263,10 @@ const intervalID = setInterval(() => {
 
   ```
 
+  ### ScreenShot
+
+  <img src="images/SpaceInvaders.png"/>
+
  
 
 ## Challenges
@@ -275,8 +277,6 @@ const intervalID = setInterval(() => {
 
 
 ## Victories 
-
-
 - I'm pleased with the look and feel of the game in terms of its appearance and the sounds and the satisfaction of removing enemy ships. 
 
 - The project really helped to consolidate my knowledge of JavaScript, HTML and CSS and interacting with the DOM. 
