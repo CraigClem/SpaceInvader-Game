@@ -19,7 +19,7 @@ The project was mainly to consolidate my beginners' knowledge of JavaScript and 
 - **Design logic for winning & visually display which player won**
 - **Include separate HTML / CSS / JavaScript files**
 - Stick with **KISS (Keep It Simple Stupid)** and **DRY (Don't Repeat Yourself)** principles
-- Use **Javascript** for **DOM manipulation**
+- Use **JavaScript** for **DOM manipulation**
 - **Deploy your game online**, where the rest of the world can access it
 - Use **semantic markup** for HTML and CSS (adhere to best practices)
 
@@ -35,7 +35,7 @@ The project was mainly to consolidate my beginners' knowledge of JavaScript and 
 
 ## The Approach
 
-When we were told we were to create a retro acrcade game from a selection of options i was delighted to see the Space Invaders was one of them! I've always assocaiated Space Invaders with the 80's and aracde gaming. The nostalgia kicked in and I was excited to be begin planning my build and began drawing out a grid and jotting down my thoughts and ideas.
+When we were told we were to create a retro arcade game from a selection of options I was delighted to see the Space Invaders was one of them! I've always associated Space Invaders with the 80's and aracde gaming. The nostalgia kicked in and I was excited to be begin planning my build and began drawing out a grid and jotting down my thoughts and ideas.
 
 
 
@@ -292,7 +292,7 @@ const intervalID = setInterval(() => {
 
 ## Key Learning
 
-- Getting to grips with Functions, Array Methods and writing conditions. As I has no previous knowledge or experience coding I found this excercise to be extremley rewarding and being able to play a game which I had build in just one week instilled confidence to accelerate my development!  
+- Getting to grips with Functions, Array Methods and writing conditions. As I has no previous knowledge or experience coding I found this exercise to be extremely rewarding and being able to play a game which I had build in just one week instilled confidence to accelerate my development!  
  
 
 ### [Play the game Now!](https://craigclem.github.io/SpaceInvader-Game/)
