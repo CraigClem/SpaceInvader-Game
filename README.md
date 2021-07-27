@@ -35,7 +35,7 @@ The project was mainly to consolidate my beginners' knowledge of JavaScript and 
 
 ## The Approach
 
-When we were told we were to create a retro arcade game from a selection of options I was delighted to see the Space Invaders was one of them! I've always associated Space Invaders with the 80's and aracde gaming. The nostalgia kicked in and I was excited to be begin planning my build and began drawing out a grid and jotting down my thoughts and ideas.
+When we were told we were to create a retro arcade game from a selection of options I was delighted to see that Space Invaders was one of them! I've always associated Space Invaders with the 80's and arcade gaming. The nostalgia kicked in and I was excited to be begin planning my build and began drawing out a grid and jotting down my thoughts and ideas.
 
 
 
